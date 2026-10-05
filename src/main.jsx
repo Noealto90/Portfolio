@@ -205,7 +205,7 @@ function App() {
             <div className="hero-meta"><span><MapPin size={15} /> {t.location}</span><span className="meta-line" /><span>© 2026</span></div>
           </div>
           <div className="hero-art reveal delay-one">
-            <div className="portrait-card"><img src="/noelia-alpizar.jpg" alt="Noelia Alpízar" /><div className="portrait-overlay" /><div className="portrait-header"><span>01</span><span>PORTFOLIO / 2026</span></div><div className="portrait-caption"><span>Noelia Alpízar</span><small>{lang === 'es' ? 'Ingeniera en computación' : 'Computer engineer'}</small></div><div className="portrait-note"><Sparkles size={15} /> {lang === 'es' ? 'desarrollo con creatividad' : 'development with creativity'}</div></div>
+            <div className="portrait-card"><img src={`${import.meta.env.BASE_URL}noelia-alpizar.jpg`} alt="Noelia Alpízar" /><div className="portrait-overlay" /><div className="portrait-header"><span>01</span><span>PORTFOLIO / 2026</span></div><div className="portrait-caption"><span>Noelia Alpízar</span><small>{lang === 'es' ? 'Ingeniera en computación' : 'Computer engineer'}</small></div><div className="portrait-note"><Sparkles size={15} /> {lang === 'es' ? 'desarrollo con creatividad' : 'development with creativity'}</div></div>
             <div className="floating-card card-code"><Code2 size={17} /><span>{lang === 'es' ? 'Construye' : 'Build'}<br /><b>{lang === 'es' ? 'limpio' : 'Clean'}</b></span></div>
             <div className="floating-card card-heart"><Heart size={18} fill="currentColor" /><span>{lang === 'es' ? 'creado con' : 'crafted with'}<br /><b>{lang === 'es' ? 'creatividad' : 'creativity'}</b></span></div>
             <div className="art-star star-one">✦</div><div className="art-star star-two">✧</div>

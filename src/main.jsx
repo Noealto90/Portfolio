@@ -7,6 +7,8 @@ import {
 } from 'lucide-react'
 import './styles.css'
 
+const NAV_SECTION_IDS = ['about', 'experience', 'projects', 'skills']
+
 const content = {
   es: {
     nav: ['Sobre mí', 'Experiencia', 'Proyectos', 'Habilidades'],
@@ -17,7 +19,7 @@ const content = {
     secondary: 'Ver proyectos',
     location: 'San Carlos, Costa Rica',
     aboutTitle: 'Sobre mí',
-    about: <>Soy una <strong>desarrolladora full-stack early-career con experiencia profesional</strong>, graduada en Ingeniería en Computación en Costa Rica. He participado en aplicaciones web y móviles, incluyendo sistemas ERP, plataformas de recursos humanos, facturación electrónica y soluciones omnicanal.</>,
+    about: <>Soy una <strong>ingeniera en computación recién graduada del Tecnológico de Costa Rica</strong> y desarrolladora full-stack early-career con experiencia profesional. He participado en aplicaciones web y móviles, incluyendo sistemas ERP, plataformas de recursos humanos, facturación electrónica y soluciones omnicanal.</>,
     about2: <>Mis tecnologías principales son TypeScript, React, Next.js, Node.js y SQL. También tengo experiencia con Angular, Vue, Kotlin, Docker, Redis y AWS. Busco una oportunidad remota donde pueda seguir creciendo y contribuir a productos reales.</>,
     facts: [{ value: '3+', label: 'años creando soluciones' }, { value: '7+', label: 'proyectos y productos' }, { value: 'B1–B2', label: 'inglés profesional' }],
     experienceTitle: 'Experiencia profesional',
@@ -62,7 +64,7 @@ const content = {
     secondary: 'See projects',
     location: 'San Carlos, Costa Rica',
     aboutTitle: 'About me',
-    about: <>I’m an <strong>early-career full-stack developer with professional experience</strong> and a Computer Engineering degree from Costa Rica. I have worked on web and mobile applications, including ERP systems, HR platforms, electronic invoicing solutions and omnichannel products.</>,
+    about: <>I’m a <strong>recent Computer Engineering graduate from the Costa Rica Institute of Technology</strong> and an early-career full-stack developer with professional experience. I have worked on web and mobile applications, including ERP systems, HR platforms, electronic invoicing solutions and omnichannel products.</>,
     about2: <>My main technologies are TypeScript, React, Next.js, Node.js and SQL. I also work with Angular, Vue, Kotlin, Docker, Redis and AWS. I’m particularly interested in remote software development roles where I can keep growing and contribute to real-world products.</>,
     facts: [{ value: '3+', label: 'years building solutions' }, { value: '7+', label: 'projects and products' }, { value: 'B1–B2', label: 'professional English' }],
     experienceTitle: 'Professional experience',
@@ -168,29 +170,42 @@ function CursorTrail() {
 }
 
 function App() {
-  const [lang, setLang] = useState('en')
+  const [lang, setLang] = useState('es')
   const [dark, setDark] = useState(false)
   const [menu, setMenu] = useState(false)
   const t = content[lang]
 
-  useEffect(() => { document.documentElement.lang = lang; document.body.className = dark ? 'dark' : '' }, [lang, dark])
+  useEffect(() => {
+    document.documentElement.lang = lang
+    document.body.classList.toggle('dark', dark)
+  }, [lang, dark])
 
-  const scrollTo = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setMenu(false) }
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setMenu(false)
+  }
+
+  const updatePointerPosition = (event) => {
+    document.documentElement.style.setProperty('--mx', `${event.clientX}px`)
+    document.documentElement.style.setProperty('--my', `${event.clientY}px`)
+  }
+
+  const toggleLanguage = () => setLang(currentLang => currentLang === 'es' ? 'en' : 'es')
 
   return (
-    <div className="site-shell" onMouseMove={(event) => { document.documentElement.style.setProperty('--mx', `${event.clientX}px`); document.documentElement.style.setProperty('--my', `${event.clientY}px`) }}>
+    <div className="site-shell" onMouseMove={updatePointerPosition}>
       <div className="grain" />
       <CursorTrail />
       <header className="navbar">
         <a className="brand" href="#top" onClick={() => scrollTo('top')}><span className="brand-mark">N</span><span>Noelia Alpízar</span></a>
         <nav className={menu ? 'nav-links open' : 'nav-links'}>
-          {t.nav.map((item, i) => <a key={item} href={`#${['about', 'experience', 'projects', 'skills'][i]}`} onClick={() => setMenu(false)}>{item}</a>)}
+          {t.nav.map((item, i) => <a key={item} href={`#${NAV_SECTION_IDS[i]}`} onClick={() => setMenu(false)}>{item}</a>)}
           <a href="#contact" onClick={() => setMenu(false)}>{t.cta}</a>
         </nav>
         <div className="nav-actions">
-          <button className="icon-button" onClick={() => setDark(!dark)} aria-label="Toggle dark mode">{dark ? <Sun size={17} /> : <Moon size={17} />}</button>
-          <button className="lang-button" onClick={() => setLang(lang === 'es' ? 'en' : 'es')}><Globe2 size={15} /> {t.language}</button>
-          <button className="menu-button" onClick={() => setMenu(!menu)} aria-label="Menu">{menu ? <X /> : <Menu />}</button>
+          <button className="icon-button" onClick={() => setDark(currentDark => !currentDark)} aria-label={dark ? 'Activar modo claro' : 'Activar modo oscuro'} aria-pressed={dark}>{dark ? <Sun size={17} /> : <Moon size={17} />}</button>
+          <button className="lang-button" onClick={toggleLanguage} aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a español'}><Globe2 size={15} /> {t.language}</button>
+          <button className="menu-button" onClick={() => setMenu(currentMenu => !currentMenu)} aria-label={menu ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menu}><span aria-hidden="true">{menu ? <X /> : <Menu />}</span></button>
         </div>
       </header>
 

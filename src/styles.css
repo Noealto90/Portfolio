@@ -186,3 +186,10 @@ body{background:var(--bg)}
 .skill-items span:hover svg{color:#c95f83;transform:rotate(-12deg) scale(1.12)}
 .skill-items span svg{transition:transform .25s ease,color .25s ease}
 @media(prefers-reduced-motion:reduce){.skill-card{transform:none!important;transition:none}.skill-items span,.skill-items span:hover{transform:none;transition:none}}
+
+/* Keep the hero content clear of the fixed navigation on short viewports. */
+html{scroll-padding-top:96px}
+.hero{padding-top:110px}
+@media(max-width:560px){
+  .hero{padding-top:92px}
+}

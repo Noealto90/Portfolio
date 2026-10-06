@@ -21,7 +21,7 @@ const content = {
     aboutTitle: 'Sobre mí',
     about: <>Soy una <strong>ingeniera en computación recién graduada del Tecnológico de Costa Rica</strong> y desarrolladora full-stack early-career con experiencia profesional. He participado en aplicaciones web y móviles, incluyendo sistemas ERP, plataformas de recursos humanos, facturación electrónica y soluciones omnicanal.</>,
     about2: <>Mis tecnologías principales son TypeScript, React, Next.js, Node.js y SQL. También tengo experiencia con Angular, Vue, Kotlin, Docker, Redis y AWS. Busco una oportunidad remota donde pueda seguir creciendo y contribuir a productos reales.</>,
-    facts: [{ value: '3+', label: 'años creando soluciones' }, { value: '7+', label: 'proyectos y productos' }, { value: 'B1–B2', label: 'inglés profesional' }],
+    facts: [{ value: '+2', label: 'años creando soluciones' }, { value: '7+', label: 'proyectos y productos' }, { value: 'B1–B2', label: 'inglés profesional' }],
     experienceTitle: 'Experiencia profesional',
     experienceIntro: 'Construyendo software para problemas reales.',
     experiences: [
@@ -66,7 +66,7 @@ const content = {
     aboutTitle: 'About me',
     about: <>I’m a <strong>recent Computer Engineering graduate from the Costa Rica Institute of Technology</strong> and an early-career full-stack developer with professional experience. I have worked on web and mobile applications, including ERP systems, HR platforms, electronic invoicing solutions and omnichannel products.</>,
     about2: <>My main technologies are TypeScript, React, Next.js, Node.js and SQL. I also work with Angular, Vue, Kotlin, Docker, Redis and AWS. I’m particularly interested in remote software development roles where I can keep growing and contribute to real-world products.</>,
-    facts: [{ value: '3+', label: 'years building solutions' }, { value: '7+', label: 'projects and products' }, { value: 'B1–B2', label: 'professional English' }],
+    facts: [{ value: '+2', label: 'years building solutions' }, { value: '7+', label: 'projects and products' }, { value: 'B1–B2', label: 'professional English' }],
     experienceTitle: 'Professional experience',
     experienceIntro: 'Building software for real-world problems.',
     experiences: [
